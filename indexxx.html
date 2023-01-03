@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Eashu chi file</title>
+  <script src="https://kit.fontawesome.com/da67c2d211.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css'>
+  <link rel='stylesheet' href='java.js'>
+  <script
+    src=&quot;https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js&quot;></script>
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r82/three.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/perlin.js'></script>
+  <link rel='stylesheet' href='style.css'>
+
+
+</head>
+
+<body>
+  <canvas></canvas>
+  <div class="container">
+    <div class="top-right">Welcome to my Portfolio</div>
+  </div>
+  <div id="flexing">
+    <a href="file explorer" class="file" data-toggle="modal" data-target="#filewebsite">
+      <i class="fa fa-folder"></i>
+    </a>
+    <a href="photos" class="file" data-toggle="modal" data-target="#uiwebsite">
+      <i class="fa fa-image"></i>
+    </a>
+    <a href="calculator" class="file" data-toggle="modal" data-target="#calculatorwebsite">
+      <i class="fa fa-calculator"></i>
+    </a>
+    <a href="settings" class="file" data-toggle="modal" data-target="#settingswebsite ">
+      <i class="fa fa-cog"></i>
+    </a>
+  </div>
+
+  <div id="foot">
+    <div id="footer">
+      <a href="window" class="home" data-toggle="modal" data-target="#windowwebsite">
+        <i class="fa fa-windows" aria-hidden="true"></i>
+      </a>
+      <a href=" resume" class="home" data-toggle="modal" data-target="#basicModal" ?>
+        <i class="fa fa-file" aria-hidden="true"></i>
+      </a>
+      <a href="mail" class="home" data-toggle="modal" data-target="#mailwebsite" ?>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a href="notepad" class="home" data-toggle="modal" data-target="#notepadwebsite" ?>
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+  </div>
+  <!-- basic modal -->
+  <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>Modal Body</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- file  modal -->
+  <div class="modal fade" id="filewebsite" tabindex="-1" role="dialog" aria-labelledby="filewebsite" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content file">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">File Explorer</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <embed src="file.html">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- cal modal -->
+  <div class="modal fade" id="calculatorwebsite" tabindex="-1" role="dialog" aria-labelledby="calculatorwebsite"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <embed src="https://eashwarinagarkar.github.io/Calculator/">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- notepad modal -->
+  <div class="modal fade" id="notepadwebsite" tabindex="-1" role="dialog" aria-labelledby="notepadwebsite"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content notepad">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Notepad</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <embed src="https://eashwarinagarkar.github.io/notepad/notepad.html">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  mail modal -->
+  <div class="modal fade" id="mailwebsite" tabindex="-1" role="dialog" aria-labelledby="mailwebsite" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content mail">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <embed src="https://eashwarinagarkar.github.io/mail/email.html">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  window modal -->
+  <div class="modal fade" id="windowwebsite" tabindex="-1" role="dialog" aria-labelledby="windowwebsite"
+    aria-hidden="true">
+    <div class="modal-dialog" data-dismiss="modal" aria-label="Close">
+      <div class="modal-content window">
+        <div class="modal-body">
+          <embed src="window.html">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  ui modal -->
+  <div class="modal fade" id="uiwebsite" tabindex="-1" role="dialog" aria-labelledby="uiwebsite" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content ui">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">UI Design </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <embed src="ui.html">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- settings  modal -->
+  <div class="modal fade" id="settingswebsite" tabindex="-1" role="dialog" aria-labelledby="settingswebsite"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content notepad">
+        <div class="modal-body">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <embed src="settings.html">
+        </div>
+
+  
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  <script src="script.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://unpkg.com/popper.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+  <script src='java.js'></script>
+
+</body>
+
+</html>

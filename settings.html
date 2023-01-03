@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+      <script src="https://cpwebassets.codepen.io/assets/packs/js/authorizeDataCapture-87166fe544ee463cb083.js"></script>
+
+
+  <title>CodePen - Windows 11 Settings App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+<style>
+/** TEMP **/
+@import url("https://fonts.cdnfonts.com/css/segoe-ui-4");
+@import url("https://static.artex.dev/assets/fonts/FluentSystemIcons-Regular.css");
+@import url("https://static.artex.dev/assets/fonts/FluentSystemIcons-Filled.css");
+@import url("https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css");
+#root {
+  max-height: 689px !important;
+  max-width: 1291px !important;
+}
+
+body {
+  overflow: hidden;
+  /* background: url("https://media.discordapp.net/attachments/920961985946988584/920962005450518528/img19.png"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+}
+
+#root::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(32, 32, 32, 0.9);
+  z-index: -1;
+}
+
+#root:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px #202020;
+  filter: blur(60px);
+  margin: -10vw;
+}
+
+:root {
+  /* Geometry */
+  --border-radius-top-level: 8px;
+  --border-radius-elements: 4px;
+  --border-radius-intersections: 0px;
+  --border-radius-top-level-snapped: 0px;
+  /* Typograph */
+  --type-color: white;
+  --type-caption-size: 12px;
+  --type-caption-line: 16px;
+  --type-body-size: 14px;
+  --type-body-line: 20px;
+  --type-body-large-size: 18px;
+  --type-body-large-line: 24px;
+  --type-subtitle-size: 20px;
+  --type-subtitle-line: 28px;
+  --type-title-size: 28px;
+  --type-title-line: 36px;
+  --type-title-large-size: 40px;
+  --type-title-large-line: 52px;
+  --type-display-size: 68px;
+  --type-display-line: 92px;
+  /* Colors */
+  --app-background: rgba(32, 32, 32, 0.9);
+  --accent-color: #FB9A44;
+  --app-border: rgb(58, 58, 58);
+  --space-background: rgba(255, 255, 255, 0);
+  --space-border: rgba(255, 255, 255, 0.201793722);
+  --button-hover: rgba(255, 255, 255, 0.0582959641);
+  --button-active: rgba(255, 255, 255, 0.0403587444);
+  --element-hover: rgba(255, 255, 255, 0.0582959641);
+  --element-active: rgba(255, 255, 255, 0.0403587444);
+  --element-enabled: rgba(255, 255, 255, 0.0582959641);
+  --element-enabled-hover: rgba(255, 255, 255, 0.0403587444);
+  --element-enabled-active: rgba(255, 255, 255, 0.0582959641);
+  --element-accent-border: rgba(255, 255, 255, 0.5470852018);
+  --card-background: rgba(255, 255, 255, 0.0493273543);
+  --card-hover: rgba(255, 255, 255, 0.0807174888);
+  --card-active: rgba(255, 255, 255, 0.0313901345);
+  --window-action-focus-color: rgba(255, 255, 255, 0.9417040359);
+  --window-action-unfocus-color: rgba(255, 255, 255, 0.3721973094);
+  --window-action-color: var(--window-action-unfocus-color);
+  --window-action-hover-color: rgba(255, 255, 255, 0.0582959641);
+  --window-close-action-hover-color: rgb(196, 43, 28);
+}
+
+body.focus {
+  --window-action-color: var(--window-action-focus-color);
+}
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+}
+
+#root {
+  font-family: "Segoe UI", sans-serif;
+  color: var(--type-color);
+  border: 1px solid var(--app-border);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  border-radius: var(--border-radius-top-level);
+  display: grid;
+  background-color: var(--app-background);
+  grid-template-columns: 300px 45px 1fr 4px;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "header . actions actions" "nav . main .";
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  color: var(--type-color);
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-elements);
+}
+button:hover {
+  background-color: var(--button-hover);
+}
+button:active {
+  background-color: var(--button-active);
+}
+
+header {
+  padding: 6px 4px;
+  grid-area: header;
+  grid-column-end: 2;
+}
+header span {
+  font-size: 11px;
+  font-weight: 400;
+}
+header button {
+  height: 36px;
+  line-height: 36px;
+  width: 40px;
+}
+
+card {
+  border-radius: var(--border-radius-elements);
+  background-color: var(--card-background);
+}
+
+hover-card {
+  border-radius: var(--border-radius-elements);
+  background-color: var(--card-background);
+}
+hover-card:hover {
+  background-color: var(--card-hover);
+}
+hover-card:active {
+  background-color: var(--card-active);
+}
+
+card, hover-card {
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+card i:first-child, hover-card i:first-child {
+  width: 18px;
+  font-size: var(--type-body-large-size);
+}
+card card-description, hover-card card-description {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+card card-description span, hover-card card-description span {
+  opacity: 0.75;
+}
+card card-description span:first-child, hover-card card-description span:first-child {
+  opacity: 1;
+  font-size: 1.1em;
+}
+
+.window-actions {
+  height: 32px;
+  grid-area: actions;
+  display: flex;
+  justify-content: end;
+}
+.window-actions button {
+  border-radius: 0;
+  width: 46px;
+  max-width: 46px;
+  color: var(--window-action-color);
+  font-weight: light;
+  font-size: 0.7em;
+  display: felx;
+  justify-content: center;
+  align-items: cetner;
+}
+.window-actions button i[class^=icon-] {
+  font-size: var(--type-body-size);
+}
+.window-actions button:hover {
+  color: var(--window-action-focus-color);
+  background-color: var(--window-action-hover-color);
+}
+.window-actions button:last-child {
+  border-radius: 0 var(--border-radius-top-level) 0 0;
+}
+.window-actions button:last-child:hover {
+  background-color: var(--window-close-action-hover-color);
+}
+
+nav {
+  grid-area: nav;
+  padding: 0 4px;
+}
+nav .NavUser {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 11px;
+  border-radius: var(--border-radius-elements);
+}
+nav .NavUser:hover {
+  background-color: var(--element-hover);
+}
+nav .NavUser:active {
+  background-color: var(--element-active);
+}
+nav .NavUser.enabled {
+  background-color: var(--element-enabled);
+}
+nav .NavUser.enabled:hover {
+  background-color: var(--element-enabled-hover);
+}
+nav .NavUser.enabled:active {
+  background-color: var(--element-enabled-active);
+}
+nav .NavUser > .NavUser__user-avatar {
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+nav .NavUser > .NavUser__user-info {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+nav .NavUser > .NavUser__user-info :first-child {
+  font-weight: 500;
+}
+nav .NavUser > .NavUser__user-info :last-child {
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-line);
+}
+nav .NavSearch {
+  border-radius: var(--border-radius-elements);
+  background-color: var(--card-background);
+  margin: 12px;
+  display: flex;
+  padding: 0 5px;
+  gap: 5px;
+  height: 32px;
+  border: 1px solid var(--space-background);
+  border-bottom-color: var(--element-accent-border);
+}
+nav .NavSearch:hover {
+  background-color: var(--card-hover);
+}
+nav .NavSearch:active {
+  background-color: var(--card-active);
+}
+nav .NavSearch:active {
+  background-color: var(--card-hover);
+}
+nav .NavSearch:has(input:focus) {
+  margin-bottom: 11px;
+  background-color: var(--space-background);
+  border-color: var(--space-border);
+  border-bottom-width: 2px;
+  border-bottom-color: var(--accent-color);
+}
+nav .NavSearch input {
+  flex: 1;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  color: var(--type-color);
+}
+nav .NavSearch button {
+  height: 22px;
+  width: 30px;
+  font-size: 10px;
+  line-height: 22px;
+  margin: 5px 0;
+}
+nav .NavSearch button .ms-Icon ms-Icon--Clear {
+  font-size: 8px;
+}
+nav .NavItems {
+  list-style: none;
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+nav .NavItems li {
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 40px 1fr;
+  height: 36px;
+  border-radius: var(--border-radius-elements);
+}
+nav .NavItems li:hover {
+  background-color: var(--element-hover);
+}
+nav .NavItems li:active {
+  background-color: var(--element-active);
+}
+nav .NavItems li.enabled {
+  background-color: var(--element-enabled);
+}
+nav .NavItems li.enabled:hover {
+  background-color: var(--element-enabled-hover);
+}
+nav .NavItems li.enabled:active {
+  background-color: var(--element-enabled-active);
+}
+nav .NavItems li i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 36px;
+}
+nav .NavItems li i[class^=icon-] {
+  font-size: var(--type-body-large-size);
+}
+nav .NavItems li.enabled::before {
+  border-radius: var(--border-radius-elements);
+  position: absolute;
+  content: "";
+  width: 3px;
+  height: 16px;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  background-color: var(--accent-color);
+}
+
+main {
+  grid-area: main;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+main h1 {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-height);
+  font-weight: 500;
+  margin: 16px 14px 32px 14px;
+}
+main content {
+  padding: 0 12px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+main content .spacer {
+  margin-top: 24px;
+}
+main ::-webkit-scrollbar {
+  width: 10px;
+}
+main ::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+main ::-webkit-scrollbar-thumb {
+  border-radius: var(--border-radius-top-level);
+  background-clip: content-box;
+  background-color: #9A9A9A;
+  border: 4px solid transparent;
+  transform: border 1s ease;
+}
+main ::-webkit-scrollbar-thumb:hover {
+  background-color: #9F9F9F;
+}
+</style></head>
+
+<body translate="no" >
+  <div id="root">
+  <header>
+    <button><i class="ms-Icon ms-Icon--Back"></i></button>
+    <span>Settings</span>
+  </header>
+  <nav>
+    <div class="NavUser">
+      <div class="NavUser__user-avatar" style="background-image: url('https://images.unsplash.com/photo-1502219684198-fa9b5164d9d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMHdhbGxwYXBlcnxlbnwwfHwwfHw%3D&w=1000&q=80')" ></div>
+      <div class="NavUser__user-info">
+        <span>Eashwari Nagarkar</span>
+        <span> “Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”</span>
+      </div>
+    </div>
+    <div class="NavSearch">
+      <input placeholder="Find a setting" />
+      <button><i class="ms-Icon ms-Icon--Clear"></i></button>
+      <button><i class="ms-Icon ms-Icon--Search"></i></button>
+    </div>
+    <ul class="NavItems">
+      <li class="enabled"><i  class="ms-Icon ms-Icon--System"></i><span>System</span></li>
+      <li><i class="icon-ic_fluent_bluetooth_20_filled"></i><span>Bluetooth & devices</span></li>
+      <li><i class="icon-ic_fluent_wifi_1_20_filled"></i><span>Network & internet</span></li>
+      <li><i class="ms-Icon ms-Icon--Brush"></i><span>Personalization</span></li>
+      <li><i class="ms-Icon ms-Icon--AppIconDefaultAdd"></i><span>Apps</span></li>
+      <li><i class="ms-Icon ms-Icon--People"></i><span>Accounts</span></li>
+      <li><i class="ms-Icon ms-Icon--Clock"></i><span>Time & language</span></li>
+      <li><i class="icon-ic_fluent_games_24_filled"></i><span>Gaming</span></li>
+      <li><i class="icon-ic_fluent_accessibility_20_filled"></i><span>Accessibility</span></li>
+      <li><i class="ms-Icon ms-Icon--Shield"></i><span>Privacy & security</span></li>
+      <li><i class="ms-Icon ms-Icon--Sync"></i><span>Windows Update</span></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>System</h1>
+    <content>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--System"></i>
+        <card-description>
+          <span>Installed apps</span>
+          <span>Uninstall and manage apps on yout pc</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--Volume3"></i>
+        <card-description>
+          <span>Sound</span>
+          <span>Volume levels, output, input, sound devices</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--"></i>
+        <card-description>
+          <span>Notifications</span>
+          <span>Alerts from apps and system</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--"></i>
+        <card-description>
+          <span>Focus assist</span>
+          <span>Notifications, automatic rules</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="icon-ic_fluent_power_28_filled"></i>
+        <card-description>
+          <span>Power</span>
+          <span>Screen and sleep, power mode</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--HardDrive"></i>
+        <card-description>
+          <span>Storage</span>
+          <span>Storage space, drives, configuration rules</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="icon-ic_fluent_share_24_filled"></i>
+        <card-description>
+          <span>Nearby sharing</span>
+          <span>Discoverability, received files location</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <hover-card>
+        <i class="ms-Icon ms-Icon--Volume3"></i>
+        <card-description>
+          <span>Multitasking</span>
+          <span>Snap windows, desktops, task switching</span>
+        </card-description>
+        <i class="ms-Icon ms-Icon--ChevronRight"></i>
+      </hover-card>
+      <br class="spacer" />
+    </content>
+  </main>
+</div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  
+      <script id="rendered-js" >
+class HoverCard extends HTMLDivElement {
+  constructor() {
+    super();
+    console.log('hover card');
+
+    if (this.hasAttribute('icon')) {
+      const icon = document.createElement('i');
+      icon.setAttribute('class', this.getAttribute('icon'));
+
+      this.appendChild(icon);
+    }
+    const chevron = document.createElement('i');
+
+    chevron.classList.add('ms-Icon');
+    chevron.classList.add('ms-Icon--ChevronRight');
+
+    this.appendChild(chevron);
+  }}
+
+
+customElements.define('hover-card', HoverCard, { extends: 'div' });
+
+window.addEventListener('focus', function () {
+  document.body.classList.add('focus');
+});
+
+window.addEventListener('blur', function () {
+  document.body.classList.remove('focus');
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 

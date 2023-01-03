@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<!-- <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" /> -->
+<!-- <meta name="apple-mobile-web-app-title" content="CodePen"> -->
+
+<!-- <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" /> -->
+
+<!-- <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" /> -->
+
+
+  <link href="https://cdn.jsdelivr.net/npm/@icon/micon@3.0.168/micon.css" rel="stylesheet" type="text/css">
+  
+
+  
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* .desktop {
+    align-items: flex-end;
+    background: url(https://res.cloudinary.com/ifanrcpgh/image/upload/v1567454623/wallpaper.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: #FFF;
+    display: flex;
+    min-height: 100vh;
+} */
+
+.startMenu,
+.buildNumber {
+    position: absolute;
+}
+
+.acrylic {
+    background-color: rgba(101, 101, 101, 0.453);
+    backdrop-filter: blur(24px) saturate(125%);
+}
+
+/* .taskbar {
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+    height: 40px;
+    width: 100%;
+} */
+
+/* .taskbar img {
+    display: inline-block;
+    max-height: 24px;
+    max-width: 24px;
+} */
+
+/* .start img {
+    height: 16px;
+    width: 16px;
+} */
+
+/* .taskbar p {
+    font-size: 14px;
+    font-weight: 600;
+} */
+
+/* .taskbar-content {
+    display: flex;
+} */
+
+/* .taskbar-content > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: background-color 140ms;
+} */
+
+/* .taskbar-content > div:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+} */
+
+.active {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* .taskbar-icon {
+    width: 50px;
+}
+
+.taskbar-text {
+    padding: 0 14px;
+} */
+
+.startMenu {
+    border-radius: 6px;
+    bottom: 48px;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    left: 8px;
+    max-height: 740px;
+    padding: 20px;
+}
+
+.startMenu-header,
+.startMenu-search {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.startMenu-header {
+    margin: 12px;
+    margin-top: 0;
+}
+
+.startMenu-profilePic {
+    position: relative;
+    width: 50px !important;
+}
+
+.startMenu-profilePic > img {
+    border-radius: 80%;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -100px;
+    margin-left: -5vw;
+    width: 120px;
+}
+
+.startMenu-option {
+    align-items: center;
+    border-radius: 4px;
+    display: flex;
+    font-size: 18px;
+    height: 40px;
+    justify-content: center;
+    width: 50px;
+}
+
+.startMenu-option:hover {
+    background-color: rgba(120, 120, 120, 0.5);
+}
+
+.startMenu-search {
+    color: #888;
+    position:relative; 
+    margin: 20px 12px;
+}
+
+input[type=text]::placeholder {
+    color: #888;
+}
+
+input[type=text] {
+    background-color: #181818;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.3);
+    color: #888;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    outline: none;
+    padding: 12px 20px;
+    transition: all 140ms;
+    width: 100%;
+}
+
+input[type=text]:focus,
+input[type=text]:hover {
+    box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.4);
+}
+
+input[type=text]:focus {
+    background-color: #fff;
+    color: #181818
+}
+.startMenu-search i {
+    position: absolute;
+    right: 20px;
+}
+
+.app-list {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-row-gap: 20px;
+}
+
+.app-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app-wrapper p {
+    font-size: 14px;
+    margin-top: 4px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+}
+
+.app-tile {
+    align-items: center;
+    background-color: #555;
+    border-radius: 2px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    height: 64px;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 120ms;
+    width: 64px;
+}
+
+.app-tile:hover {
+    transform: scale(1.12);
+}
+
+.app-tile img {
+    max-height: 32px;
+    max-width: 32px;
+}
+a {
+   text-decoration: none;
+   color: #000;
+}
+
+.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 1px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 12px;
+    margin-bottom: 24px;
+}
+
+.fluent-icon {
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5)); 
+}
+
+
+#edge {
+   background-color: #034487;
+}
+
+#excel {
+    background-color: #185C37;
+}
+
+#onedrive {
+    background-color: #0360AF;
+}
+
+#onenote {
+    background-color: #6f1790;
+}
+
+#powerpoint {
+    background-color: #a8391a;
+}
+
+#skype {
+    background-color: #0068D4;
+}
+
+#teams {
+    background-color: #383872;
+}
+
+#todo {
+    background-color: #FFF;
+}
+
+#word {
+    background-color: #103F91;
+}
+</style>
+
+</head>
+
+ <body translate="no" > 
+  <!-- <div class="desktop">  -->
+   <div class="startMenu acrylic">
+      <div class="startMenu-header">
+         <div class="startMenu-option">
+            <i class="mi mi-AllApps"></i>
+         </div>
+         <div class="startMenu-profilePic">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577819144/user-icon.png">
+         </div>
+         <div class="startMenu-option">
+            <i class="mi mi-PowerButton"></i>
+         </div>
+      </div>
+      <div class="startMenu-search">
+         <input type="text" placeholder="Search the web and your stuff...">
+         <i class="mi mi-Search"></i>
+      </div>
+      <div class="startMenu-suggested">
+         <h1>Social Media</h1>
+         <div class="app-list">
+            <a href=" https://www.instagram.com/_eashwariiii_/"target="_blank">
+            <div class="app-wrapper">
+               <div id="instagram"  class="app-tile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png">
+               </div>
+               <p>Instagram</p>
+            </div> </a>
+            <a href="https://www.linkedin.com/in/eashwari-nagarkar/" target="_blank">
+            <div class="app-wrapper">
+               <div id="Instagram" class="app-tile">
+                  <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG6.png">
+               </div>
+               <p>Linkedin</p>
+            </div> </a>
+            <a href="https://dribbble.com/Mysterious03" target="_blank">
+            <div class="app-wrapper">
+               <div id="Dribbble" class="app-tile">
+                  <img  src="https://cdn.freebiesupply.com/logos/large/2x/dribbble-5-logo-png-transparent.png">
+               </div>
+               <p>Dribbble</p>
+            </div> </a>
+            <a href="https://www.behance.net/eashwarinagarkar" target="_blank">
+            <div class="app-wrapper">
+               <div id="Dribble" class="app-tile">
+                  <img src= "https://cdn-icons-png.flaticon.com/512/145/145799.png">
+               </div>
+               <p>Behance</p>
+            </div>
+            <a href="https://github.com/EashwariNagarkar" target="_blank">
+            <div class="app-wrapper">
+               <div id="Behance" class="app-tile">
+                  <img  src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+               </div>
+               <p>Github</p>
+            </div>
+         </div> </a>
+
+         <!-- <div class="app-wrapper">
+            <div id="todo" class="app-tile">
+               <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/to-do.png">
+            </div>
+            <p>To-Do</p>
+         </div> -->
+         <div class="divider"></div>
+      </div>
+      <div class="startMenu-apps">
+         <div class="app-list">
+            <a href="">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/calculator.png">
+               </div>
+               <p>Calculator</p>
+            </div> </a>
+            <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/calendar.png">
+               </div>
+               <p>Calendar</p>
+            </div> </a>
+            <a href="https://docs.google.com/spreadsheets/u/0/?tgif=d" target="_blank">
+            <div class="app-wrapper">
+               <div id="excel" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/excel.png">
+               </div>
+               <p>Excel</p>
+            </div> </a>
+            <a href="file.html"  target="_blank">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/file-explorer.png">
+               </div>
+               <p>File Explorer</p>
+            </div>
+         </a>
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/groove-music.png">
+               </div>
+               <p>Groove Music</p>
+            </div>
+            <div class="app-wrapper">
+               <div id="edge" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/edge.png">
+               </div>
+               <p>Microsoft Edge</p>
+            </div>
+            <a href="https://eashwarinagarkar.github.io/mail/email.html"target="_blank">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/mail.png">
+               </div>
+               <p>Mail</p>
+            </div> </a>
+            <a href="https://www.google.com/maps" target="_blank">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/maps.png">
+               </div>
+               <p>Maps</p>
+            </div>
+            <div class="app-wrapper">
+               <div id="onedrive" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/onedrive.png">
+               </div> </a>
+               <p>OneDrive</p>
+            </div>
+            <div class="app-wrapper">
+               <div id="onenote" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/onenote.png">
+               </div>
+               <p>OneNote</p>
+            </div>
+            <a href="ui.html" target="_blank">
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/photos.png">
+               </div>
+               <p>Photos</p>
+            </div> </a>
+            <a href="https://docs.google.com/presentation/" target="_blank">
+            <div class="app-wrapper">
+               <div id="powerpoint" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/powerpoint.png">
+               </div>
+               <p>PowerPoint</p>
+            </div>
+         </a>
+         
+            <div class="app-wrapper">
+               <div id="skype" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/skype.png">
+               </div>
+               <p>Skype</p>
+            </div>
+            <div class="app-wrapper">
+               <div id="teams" class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818134/teams.png">
+               </div>
+               <p>Teams</p>
+            </div>
+            <div class="app-wrapper">
+               <div class="app-tile">
+                  <img class="fluent-icon" src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/weather.png">
+               </div>
+               <p>Weather</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- <div class="taskbar acrylic">
+      <div class="taskbar-content">
+         <div class="taskbar-icon start active">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577819017/microsoft-icon.png">
+         </div>
+         <div class="taskbar-icon">
+            <i class="mi mi-TaskView"></i>
+         </div>
+         <div class="taskbar-icon">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/edge.png">
+         </div>
+         <div class="taskbar-icon">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/file-explorer.png">
+         </div>
+         <div class="taskbar-icon">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/vs-code.png">
+         </div>
+         <div class="taskbar-icon">
+            <img src="https://res.cloudinary.com/ifanrcpgh/image/upload/v1577818111/terminal.png">
+         </div>
+      </div>
+      <div class="taskbar-content">
+         <div class="taskbar-icon">
+            <i class="mi mi-MobWifi4"></i>
+         </div>
+         <div class="taskbar-icon">
+            <i class="mi mi-BandBattery6 mi-rotate-270"></i>
+         </div>
+         <div class="taskbar-text">
+            <p>August 31</p>
+         </div>
+         <div class="taskbar-text">
+            <p>08:18 AM</p>
+         </div>
+         <div class="taskbar-icon">
+            <i class="mi mi-ActionCenter"></i>
+         </div>
+      </div>
+   </div> -->
+</div>
+  
+  
+  
+  
+
+</body>
+
+</html>
+ 

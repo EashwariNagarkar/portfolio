@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+   font-family: "monospace";
+}
+
+#settings {
+   position: absolute;
+   left: 2%;
+   top: 2%;
+}
+
+#text-area {
+   position: absolute;
+   left: 2%;
+   top: 10%;
+   width: 50%;
+   height: 50%;
+   font-size: 16pt;
+}
+
+  </style>
+</head>
+<body>
+  <div id="settings">
+    <label for="font-size">Font Size:</label>
+    <input id="font-size" type="number" min="8" max="96" value="16" onchange="change_font_size()"/>
+ 
+    <label for="text-color">Text Color:</label>
+    <input id="text-color" type="color" onchange="change_text_color()" />
+ </div>
+ 
+ <textarea id="text-area" autofocus="true"></textarea>
+ <script>
+   function change_font_size() {
+   document.getElementById('text-area').style.fontSize = document.getElementById('font-size').value + 'px';
+}
+
+function change_text_color() {
+   document.getElementById('text-area').style.color = document.getElementById('text-color').value;
+}
+
+ </script>
+</body>
+</html>
